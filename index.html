@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Fire Tournament</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <h1>Free Fire Tournament</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="register.html">Register</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="scoreboard.html">Scoreboard</a>
+      <a href="rules.html">Rules</a>
+      <a href="login.html">Login</a>
+      <a href="teams.html">Teams</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <h2>Welcome to the Ultimate Free Fire Tournament!</h2>
+    <p id="countdown"></p>
+    <a href="register.html" class="btn">Register Now</a>
+  </section>
+  <script>
+    const countDate = new Date("2025-07-15T18:00:00").getTime();
+    const timer = setInterval(function () {
+      const now = new Date().getTime();
+      const distance = countDate - now;
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "Tournament Started!";
+        clearInterval(timer);
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("countdown").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    }, 1000);
+  </script>
+</body>
+</html>
